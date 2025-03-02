@@ -198,11 +198,14 @@ nav li a:hover {
 .ai-developments {
     padding: 80px 20px;
     text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
 .ai-developments h1 {
     font-size: 3em;
     text-shadow: 0 0 20px #00d4ff;
+    margin-bottom: 40px;
 }
 .news-container {
     display: grid;
@@ -221,7 +224,9 @@ nav li a:hover {
     border-radius: 10px;
     transition: all 0.3s ease;
     opacity: 1; 
-    color: #fff; 
+    color: #fff;
+    position: relative;
+    z-index: 1;
 }
 
 .news-item:hover {
@@ -237,4 +242,10 @@ nav li a:hover {
 
 .news-item p {
     font-size: 1em;
+    color: #fff;
+    margin: 5px 0;
+}
+
+.news-item p em {
+    color: #00d4ff;
 }
