@@ -17,7 +17,7 @@ aiDevelopments.forEach(item => {
 });
 
 gsap.from(".news-item", {
-    duration: 1,
+    duration: 3,
     opacity: 0,
     y: 50,
     stagger: 0.2,
