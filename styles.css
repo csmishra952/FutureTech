@@ -1,14 +1,12 @@
 body {
+    font-family: 'Orbitron', sans-serif;
     background-image: url('FuturisticCity.avif');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    font-family: 'Orbitron', sans-serif;
     color: #fff;
-    margin: 0;
-    padding: 0;
+    line-height: 1.6;
     position: relative;
-    overflow-x: hidden;
 }
 
 body::before {
