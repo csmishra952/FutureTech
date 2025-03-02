@@ -16,10 +16,12 @@ aiDevelopments.forEach(item => {
     newsContainer.appendChild(newsItem);
 });
 
+// In scripts-ai.js
+gsap.from(".ai-developments h1", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
 gsap.from(".news-item", {
-    duration: 1,
+    duration: 1.2,
     opacity: 0,
-    y: 50,
-    stagger: 0.2,
-    ease: "power2.out"
+    scale: 0.8,
+    stagger: 0.3,
+    ease: "elastic.out(1, 0.5)"
 });
