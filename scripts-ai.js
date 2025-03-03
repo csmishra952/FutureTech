@@ -1,34 +1,10 @@
-const fallbackNews = [
-    { title: "AI Predicts Climate Patterns", date: "Feb 2025", description: "New models improve accuracy by 30%.", url: "#" },
-    { title: "Robots Assist in Surgery", date: "Jan 2025", description: "AI-driven precision reaches 99% success rate.", url: "#" },
-    { title: "Quantum AI Breakthrough", date: "Mar 2025", description: "First hybrid system deployed.", url: "#" }
+const aiNews = [
+    { title: "AI Predicts Climate Patterns with High Accuracy", date: "Feb 2025", description: "New models improve climate prediction accuracy by 30%, aiding global efforts.", url: "https://example.com/climate-ai" },
+    { title: "Robots Revolutionize Surgery", date: "Jan 2025", description: "AI-driven robots achieve a 99% success rate in complex surgeries.", url: "https://example.com/robot-surgery" },
+    { title: "Quantum AI Breakthrough Unveiled", date: "Mar 2025", description: "First hybrid quantum-AI system deployed, promising faster computations.", url: "https://example.com/quantum-ai" },
+    { title: "AI Agents Enhance Productivity", date: "Dec 2024", description: "OpenAI’s o1 model boosts developer efficiency by 55%.", url: "https://example.com/ai-agents" },
+    { title: "Robotics in Industry Soars", date: "Nov 2024", description: "50% of industrial tasks now automated with advanced robotics.", url: "https://example.com/robotics-industry" }
 ];
-
-
-async function fetchAINews() {
-    const apiKey = 'eefc82254e014d96881e251646a55fc3';
-    const url = `https://newsapi.org/v2/everything?q="artificial intelligence" OR "AI" OR "robotics" -inurl:(signup login)&sortBy=publishedAt&apiKey=${apiKey}&pageSize=6`;
-
-    try {
-        const response = await fetch(url);
-        if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        const data = await response.json();
-        if (!data.articles || data.articles.length === 0) {
-            throw new Error('No articles returned');
-        }
-        displayNews(data.articles.map(article => ({
-            title: article.title,
-            date: new Date(article.publishedAt).toLocaleDateString(),
-            description: article.description,
-            url: article.url
-        })));
-    } catch (error) {
-        console.error('Error fetching AI news:', error.message);
-        displayNews(fallbackNews);
-    }
-}
 
 function displayNews(newsItems) {
     const newsContainer = document.getElementById('ai-news');
@@ -38,10 +14,10 @@ function displayNews(newsItems) {
         const newsItem = document.createElement('div');
         newsItem.classList.add('news-item');
         newsItem.innerHTML = `
-            <h3>${item.title || 'Untitled'}</h3>
-            <p><em>${item.date || 'Date Unknown'}</em></p>
-            <p>${item.description || 'No description available.'}</p>
-            <a href="${item.url || '#'}" target="_blank" rel="noopener noreferrer">Read More</a>
+            <h3>${item.title}</h3>
+            <p><em>${item.date}</em></p>
+            <p>${item.description}</p>
+            <a href="${item.url}" target="_blank" rel="noopener noreferrer">Read More</a>
         `;
         newsContainer.appendChild(newsItem);
     });
@@ -62,4 +38,4 @@ gsap.from('.ai-developments h1', {
     ease: 'bounce.out'
 });
 
-document.addEventListener('DOMContentLoaded', fetchAINews);
+document.addEventListener('DOMContentLoaded', () => displayNews(aiNews));
