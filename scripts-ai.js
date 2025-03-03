@@ -1,28 +1,26 @@
 async function fetchAINews() {
-    const apiKey = 'eefc82254e014d96881e251646a55fc3'; 
-    const url = `https://newsapi.org/v2/everything?q="artificial intelligence" OR "AI" OR "robotics" -inurl:(signup login)&sortBy=publishedAt&apiKey=${apiKey}&pageSize=6`; // Fetch 6 recent articles
+    const apiKey = 'eefc82254e014d96881e251646a55fc3';
+    const url = `https://newsapi.org/v2/everything?q="artificial intelligence" OR "AI" OR "robotics" -inurl:(signup login)&sortBy=publishedAt&apiKey=${apiKey}&pageSize=6`;
 
     try {
         const response = await fetch(url);
         if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            throw new Error(`HTTP error! Status: ${response.status} - ${response.statusText}`);
         }
         const data = await response.json();
+        if (!data.articles || data.articles.length === 0) {
+            throw new Error('No articles returned from API');
+        }
         displayNews(data.articles);
     } catch (error) {
-        console.error('Error fetching AI news:', error);
-        displayError();
+        console.error('Error fetching AI news:', error.message);
+        displayError(error.message);
     }
 }
 
 function displayNews(articles) {
     const newsContainer = document.getElementById('ai-news');
     newsContainer.innerHTML = ''; 
-
-    if (articles.length === 0) {
-        newsContainer.innerHTML = '<p>No recent AI news found.</p>';
-        return;
-    }
 
     articles.forEach(article => {
         const newsItem = document.createElement('div');
@@ -46,9 +44,9 @@ function displayNews(articles) {
     });
 }
 
-function displayError() {
+function displayError(errorMsg) {
     const newsContainer = document.getElementById('ai-news');
-    newsContainer.innerHTML = '<p>Failed to load latest AI news. Please try again later.</p>';
+    newsContainer.innerHTML = `<p>Failed to load latest AI news: ${errorMsg}. Please try again later.</p>`;
 }
 
 gsap.from('.ai-developments h1', {
