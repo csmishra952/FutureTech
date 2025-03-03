@@ -7,17 +7,6 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
 </head>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script>
-    gsap.from(".news-item", {
-        duration: 1.2,
-        opacity: 0,
-        scale: 0.8,
-        stagger: 0.3,
-        ease: "elastic.out(1, 0.5)"
-    });
-    gsap.from(".ai-developments h1", { duration: 1.5, y: -50, opacity: 0, ease: "bounce.out" });
-</script>
 <body>
     <nav>
         <ul>
@@ -26,24 +15,9 @@
     </nav>
     <section class="ai-developments">
         <h1>Latest AI Breakthroughs</h1>
-        <div class="news-container" id="ai-news">
-            <div class="news-item">
-                <h3>AI Predicts Climate Patterns</h3>
-                <p><em>Feb 2025</em></p>
-                <p>New models improve accuracy by 30%.</p>
-            </div>
-            <div class="news-item">
-                <h3>Robots Assist in Surgery</h3>
-                <p><em>Jan 2025</em></p>
-                <p>AI-driven precision reaches 99% success rate.</p>
-            </div>
-            <div class="news-item">
-                <h3>Quantum AI Breakthrough</h3>
-                <p><em>Mar 2025</em></p>
-                <p>First hybrid system deployed.</p>
-            </div>
-        </div>
+        <div class="news-container" id="ai-news"></div>
     </section>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="scripts-ai.js"></script>
 </body>
 </html>
